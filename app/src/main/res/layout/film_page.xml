@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Titre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/textTitre"
+        android:textSize="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/afficheFilm"
+
+        android:id="@+id/buttonAffiche"
+        android:layout_below="@+id/textTitre"
+
+         />
+
+    <Button
+        android:text="Recommander"
+        android:id="@+id/buttonRecommander"
+        android:textSize="20dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Add to Wishlist"
+        android:id="@+id/buttonAddToWishlist"
+        android:textSize="20dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/textDescription"
+        android:textSize="30dp"
+
+        android:layout_below="@+id/textTitre"
+        android:layout_toRightOf="@+id/buttonAffiche"
+        android:layout_toEndOf="@+id/buttonAffiche" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etoiles"
+
+        android:id="@+id/buttonNotation"
+
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
