@@ -4,20 +4,37 @@
     android:layout_height="match_parent">
 
     <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/searchViewUser"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="Rechercher un utilsateur"
+        >
 
-        <TextView
-            android:text="rechercher un utilisateur"
-            android:id="@+id/rechercher_un_film"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="100dp"
-            android:layout-y="200dp"
-            />
+
+
     </SearchView>
 
-        <!--Mettre une liste view ici-->
+    <EditText
+        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:textSize="25dp"
+        android:hint="Rechercher un utilisateur"
+        android:id="@+id/rechercherUtilisateur"
+        android:layout_toRightOf="@+id/searchViewUser"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/validerRechercheUtilisateur"
+        android:text="Valider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rechercherUtilisateur"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <!--Mettre une liste view ici-->
 
     </RelativeLayout>

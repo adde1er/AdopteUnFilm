@@ -25,7 +25,7 @@
          />
 
     <Button
-        android:text="Recommander"
+        android:text="  Partager  "
         android:id="@+id/buttonRecommander"
         android:textSize="20dp"
         android:background="@color/colorPrimary"
@@ -36,7 +36,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Add to Wishlist"
+        android:text="   WishList   "
         android:id="@+id/buttonAddToWishlist"
         android:textSize="20dp"
         android:background="@color/colorPrimary"
@@ -47,7 +47,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="Description"
+        android:text=" Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -62,12 +62,13 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:background="@drawable/etoiles"
-
         android:id="@+id/buttonNotation"
-
-
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/buttonRecommander"
+        android:layout_toEndOf="@+id/buttonRecommander"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
