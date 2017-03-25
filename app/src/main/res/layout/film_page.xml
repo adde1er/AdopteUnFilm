@@ -17,7 +17,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/afficheFilm"
+        android:background="@drawable/affichefilm"
 
         android:id="@+id/buttonAffiche"
         android:layout_below="@+id/textTitre"
