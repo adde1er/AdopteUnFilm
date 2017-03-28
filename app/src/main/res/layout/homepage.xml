@@ -2,30 +2,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:gravity="center_horizontal">
 
 
     <Button
-        android:text="Profil"
-        android:id="@+id/buttonProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:textColor="#000000"
-        android:background="@color/colorPrimary"
-        />
-
-    <Button
-        android:text="User"
-        android:id="@+id/buttonRechercherUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:textColor="#000000"
-        android:background="@color/colorPrimary"
-        android:layout_alignParentRight="true"
+        android:id="@+id/boutonProfil"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cercle"
+        android:drawableTop="@drawable/ic_person_white_24dp"
+        android:paddingTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Profile"
+        android:textColor="#fff"
         android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        android:id="@+id/boutonUtilisateurs"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/cercle"
+        android:drawableTop="@drawable/ic_people_white_24dp"
+        android:drawableBottom="@android:drawable/ic_menu_search"
+        android:paddingTop="10dp"
+        android:text="Users"
+        android:textColor="#fff"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         />
+
 
     <!--TextView
         android:text="ADOPTE UN FILM"
@@ -39,43 +49,55 @@
 
 
 
-    ]]>
+
+
+
+
+
+
+
+
+
+
+        ]]>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/boutonTrouverFilm"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cercle"
+        android:drawableTop="@drawable/ic_movie_creation_white_24dp"
+        android:paddingTop="20dp"
+        android:text="Find a Movie"
+        android:textColor="#fff"
+        android:layout_marginBottom="14dp"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="189dp"
+        android:layout_height="135dp"
         android:background="@drawable/logov1"
         android:layout_x="200dp"
         android:layout_y="300dp"
         android:id="@+id/button"
-        android:layout_below="@+id/buttonRechercherFilm"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Film"
-        android:id="@+id/buttonRechercherFilm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:textColor="#000000"
-        android:background="@color/colorPrimary"
-        android:layout_below="@+id/buttonRechercherUser"
+        android:id="@+id/boutonFilms"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cercle"
+        android:drawableTop="@drawable/ic_local_movies_white_24dp"
+        android:drawableBottom="@android:drawable/ic_menu_search"
+        android:paddingTop="10dp"
+        android:text="Movies"
+        android:textColor="#fff"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp" />
-
-    <Button
-        android:text="TROUVER UN FILM"
-        android:layout_width="300dp"
-        android:layout_height="110dp"
-        android:id="@+id/buttonRecommandation"
-        android:textSize="30dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-		android:onClick="suggestions"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp" />
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
