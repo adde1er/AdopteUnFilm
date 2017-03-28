@@ -73,7 +73,7 @@
         android:textSize="30dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-
+		android:onClick="suggestions"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="65dp" />
