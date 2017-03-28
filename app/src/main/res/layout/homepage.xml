@@ -69,13 +69,13 @@
         android:text="TROUVER UN FILM"
         android:layout_width="300dp"
         android:layout_height="110dp"
-        android:id="@+id/buttonRecommandation"
+        android:id="@+id/buttonTrouverUnFilm"
         android:textSize="30dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
 
+        android:layout_marginBottom="64dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
