@@ -40,15 +40,19 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Suivre"
-        android:id="@+id/buttonSuivre"
-        android:textSize="30dp"
-        android:background="@color/colorPrimary"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:id="@+id/boutonSuivre"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/cercle"
+        android:drawableTop="@drawable/ic_person_add_white_24dp"
+        android:paddingTop="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Follow"
+        android:textColor="#fff"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp" />
-
+        android:layout_marginBottom="10dp"
+        />
 
 </RelativeLayout>

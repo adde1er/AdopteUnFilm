@@ -58,7 +58,6 @@
         android:layout_marginTop="10dp"
         android:text="Profile"
         android:textColor="#fff"
-
         />
 
     <Button
