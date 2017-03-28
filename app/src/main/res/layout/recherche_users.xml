@@ -3,19 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <SearchView
+    <Button
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/searchViewUser"
+        android:id="@+id/validerRechercheUtilisateur"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="Rechercher un utilsateur"
+        android:paddingTop="10dp"
+        android:background="@drawable/cercle"
+        android:drawableTop="@android:drawable/ic_menu_search"
         >
-
-
-
-    </SearchView>
+    </Button>
 
     <EditText
         android:layout_height="50dp"
@@ -23,18 +22,11 @@
         android:textSize="25dp"
         android:hint="Rechercher un utilisateur"
         android:id="@+id/rechercherUtilisateur"
-        android:layout_toRightOf="@+id/searchViewUser"
+        android:layout_toRightOf="@+id/validerRechercheUtilisateur"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
-        android:id="@+id/validerRechercheUtilisateur"
-        android:text="Valider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rechercherUtilisateur"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
     <!--Mettre une liste view ici-->
 
     </RelativeLayout>
