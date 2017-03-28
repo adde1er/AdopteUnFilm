@@ -15,8 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Recherche"></activity>
-        <activity android:name=".Activities.Suggestion"></activity>
+        <activity android:name=".Activities.RechercheFilms"></activity>
+        <activity android:name=".Activities.Suggestions"></activity>
         <activity android:name=".Activities.WishList"></activity>
     </application>
 
