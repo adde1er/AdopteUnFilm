@@ -46,19 +46,6 @@
         android:fontFamily="arial"
         android:textStyle="bold"
        --><![CDATA[ />
-
-
-
-
-
-
-
-
-
-
-
-
-
         ]]>
 
     <Button
@@ -98,6 +85,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="65dp" />
 
 </RelativeLayout>

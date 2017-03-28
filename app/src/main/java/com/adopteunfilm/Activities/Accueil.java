@@ -15,7 +15,7 @@ public class Accueil extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-        Button rechercheFilms=(Button) findViewById(R.id.buttonRechercherFilm);
+        Button rechercheFilms=(Button) findViewById(R.id.boutonFilms);
         rechercheFilms.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -25,7 +25,7 @@ public class Accueil extends AppCompatActivity{
             }
         });
 
-        Button rechercheUser=(Button) findViewById(R.id.buttonRechercherUser);
+        Button rechercheUser=(Button) findViewById(R.id.boutonUtilisateurs);
         rechercheUser.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
@@ -34,7 +34,7 @@ public class Accueil extends AppCompatActivity{
             }
         });
 
-        Button profil =(Button) findViewById(R.id.buttonProfil);
+        Button profil =(Button) findViewById(R.id.boutonProfil);
         profil.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
@@ -43,11 +43,11 @@ public class Accueil extends AppCompatActivity{
             }
         });
 
-        Button suggestions =(Button) findViewById(R.id.buttonTrouverUnFilm);
+        Button suggestions =(Button) findViewById(R.id.boutonTrouverFilm);
         suggestions.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
-                Intent accesSuggestions = new Intent(Accueil.this, Suggestions.class);
+                Intent accesSuggestions = new Intent(Accueil.this, Suggestion.class);
                 startActivity(accesSuggestions);
             }
         });
