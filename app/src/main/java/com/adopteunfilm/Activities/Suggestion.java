@@ -41,62 +41,65 @@ public class Suggestion  extends AppCompatActivity {
 	public String toTitle;
 	public Bitmap icon;
 
-	//wishlist
+	/*	//wishlist
 	private ListView mDrawerList;
 	private DrawerLayout mDrawerLayout;
+	private ArrayAdapter<String> mAdapter;
 	private ActionBarDrawerToggle mDrawerToggle;
+	private String mActivityTitle; */
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.suggestions);
-		 
+
 		affiche = (ImageView) findViewById(R.id.buttonAffiche);
 		description = (TextView) findViewById(R.id.textDescription);
 		titre = (TextView) findViewById(R.id.textTitre);
-	        
-			Thread t = new Thread(){
-				public void run() {
-					try {
-						URL url = new URL("http://www.omdbapi.com/?t=Jumanji&plot=full");
-	                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-	                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-	                	java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
-	                    x =  s.hasNext() ? s.next() : "";
-	                    JSONObject jsnObject = new JSONObject(x);
-	                    toTitle = jsnObject.getString("Title");
-	                    toDesc = jsnObject.getString("Plot");
-	                    x = jsnObject.getString("Poster");
-	                    
-	                    icon = null;
-	                    in = new URL(x).openStream();
-	                    icon = BitmapFactory.decodeStream(in);        
-	                }catch(Exception e){
-	                }
-		            handler.post(new Runnable() {
-		                public void run() {
-		                	affiche.setImageBitmap(icon);
-		                	description.setText(toDesc);
-		                	titre.setText(toTitle);
-		                }
-		            });
-		        }
-			};
-			t.start();
 
+		Thread t = new Thread() {
+			public void run() {
+				try {
+					URL url = new URL("http://www.omdbapi.com/?t=Jumanji&plot=full");
+					HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+					InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+					java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
+					x = s.hasNext() ? s.next() : "";
+					JSONObject jsnObject = new JSONObject(x);
+					toTitle = jsnObject.getString("Title");
+					toDesc = jsnObject.getString("Plot");
+					x = jsnObject.getString("Poster");
 
-		mDrawerList = (ListView)findViewById(R.id.navList);
-		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+					icon = null;
+					in = new URL(x).openStream();
+					icon = BitmapFactory.decodeStream(in);
+				} catch (Exception e) {
+				}
+				handler.post(new Runnable() {
+					public void run() {
+						affiche.setImageBitmap(icon);
+						description.setText(toDesc);
+						titre.setText(toTitle);
+					}
+				});
+			}
+		};
+		t.start();
+
+/*
+		mDrawerList = (ListView)findViewById(R.id.navList);mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+		mActivityTitle = getTitle().toString();
 
 		addDrawerItems();
 		setupDrawer();
 
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 	}
-
 
 	private void addDrawerItems() {
 		String[] osArray = { "Android", "iOS", "Windows", "OS X", "Linux" };
-		ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
+		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
 		mDrawerList.setAdapter(mAdapter);
 
 		mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -107,19 +110,20 @@ public class Suggestion  extends AppCompatActivity {
 		});
 	}
 
-
 	private void setupDrawer() {
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
-			//Quand on menu est ouvert
+			// Called when a drawer has settled in a completely open state.
 			public void onDrawerOpened(View drawerView) {
 				super.onDrawerOpened(drawerView);
+				getSupportActionBar().setTitle("Navigation!");
 				invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 			}
 
-				//Quand c'est fermé
-				public void onDrawerClosed(View view) {
+			// Called when a drawer has settled in a completely closed state. //
+			public void onDrawerClosed(View view) {
 				super.onDrawerClosed(view);
+				getSupportActionBar().setTitle(mActivityTitle);
 				invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 			}
 		};
@@ -150,12 +154,11 @@ public class Suggestion  extends AppCompatActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings) {
-			return true;
-		}
 
 		// Activate the navigation drawer toggle
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -164,5 +167,6 @@ public class Suggestion  extends AppCompatActivity {
 
 		return super.onOptionsItemSelected(item);
 	}
-
+		*/
+}
 }
