@@ -15,46 +15,25 @@ public class Accueil extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-        Button rechercheFilms=(Button) findViewById(R.id.boutonFilms);
-        rechercheFilms.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent accesrechercheFilms = new Intent(Accueil.this, RechercheFilms.class);
-                startActivity(accesrechercheFilms);
-            }
-        });
-
-        Button rechercheUser=(Button) findViewById(R.id.boutonUtilisateurs);
-        rechercheUser.setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View v){
-                Intent accesrechercheusers = new Intent(Accueil.this, RechercheUser.class);
-                startActivity(accesrechercheusers);
-            }
-        });
-
-        Button profil =(Button) findViewById(R.id.boutonProfil);
-        profil.setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View v){
-                Intent accesProfil = new Intent(Accueil.this, ProfilUser.class);
-                startActivity(accesProfil);
-            }
-        });
-
-        Button suggestions =(Button) findViewById(R.id.boutonTrouverFilm);
-        suggestions.setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View v){
-                Intent accesSuggestions = new Intent(Accueil.this, Suggestion.class);
-                startActivity(accesSuggestions);
-            }
-        });
     }
 
-    public void suggestions(View view) {
+    public void suggestion(View view){
     	Intent intent = new Intent(this, Suggestion.class);
+    	startActivity(intent);
+    }
+    
+    public void profilUser(View view){
+    	Intent intent = new Intent(this, ProfilUser.class);
+    	startActivity(intent);
+    }
+    
+    public void rechercheUser(View view){
+    	Intent intent = new Intent(this, RechercheUser.class);
+    	startActivity(intent);
+    }
+    
+    public void rechercheFilms(View view){
+    	Intent intent = new Intent(this, RechercheFilms.class);
     	startActivity(intent);
     }
     
