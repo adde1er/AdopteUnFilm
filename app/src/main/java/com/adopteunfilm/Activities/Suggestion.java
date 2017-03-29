@@ -2,20 +2,28 @@ package com.adopteunfilm.Activities;
 
 import com.adopteunfilm.R;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.view.View;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.Toast;
+
 import java.net.*;
 import java.io.*;
 import java.lang.*;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -32,7 +40,12 @@ public class Suggestion  extends AppCompatActivity {
 	public String toDesc;
 	public String toTitle;
 	public Bitmap icon;
-	
+
+	//wishlist
+	private ListView mDrawerList;
+	private DrawerLayout mDrawerLayout;
+	private ActionBarDrawerToggle mDrawerToggle;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,7 +83,86 @@ public class Suggestion  extends AppCompatActivity {
 		        }
 			};
 			t.start();
-		 
-	 }
-	        
+
+
+		mDrawerList = (ListView)findViewById(R.id.navList);
+		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
+		addDrawerItems();
+		setupDrawer();
+
+	}
+
+
+	private void addDrawerItems() {
+		String[] osArray = { "Android", "iOS", "Windows", "OS X", "Linux" };
+		ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
+		mDrawerList.setAdapter(mAdapter);
+
+		mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Toast.makeText(Suggestion.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
+			}
+		});
+	}
+
+
+	private void setupDrawer() {
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
+
+			//Quand on menu est ouvert
+			public void onDrawerOpened(View drawerView) {
+				super.onDrawerOpened(drawerView);
+				invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+			}
+
+				//Quand c'est fermé
+				public void onDrawerClosed(View view) {
+				super.onDrawerClosed(view);
+				invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+			}
+		};
+
+		mDrawerToggle.setDrawerIndicatorEnabled(true);
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+
+		//noinspection SimplifiableIfStatement
+		if (id == R.id.action_settings) {
+			return true;
+		}
+
+		// Activate the navigation drawer toggle
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
 }
