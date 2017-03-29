@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@drawable/lake">
 
 
     <Button
@@ -12,29 +15,33 @@
         android:background="@drawable/cercle"
         android:drawableTop="@drawable/ic_person_white_24dp"
         android:paddingTop="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:text="Profile"
         android:textColor="#fff"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:onClick="profilUser"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/boutonUtilisateurs"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="10dp"
         android:background="@drawable/cercle"
         android:drawableTop="@drawable/ic_people_white_24dp"
         android:drawableBottom="@android:drawable/ic_menu_search"
         android:paddingTop="10dp"
         android:text="Users"
         android:textColor="#fff"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        />
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="16dp"
+        android:onClick="rechercheUser"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <!--TextView
@@ -46,31 +53,9 @@
         android:fontFamily="arial"
         android:textStyle="bold"
        --><![CDATA[ />
-        ]]>
 
-    <Button
-        android:id="@+id/boutonTrouverFilm"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/cercle"
-        android:drawableTop="@drawable/ic_movie_creation_white_24dp"
-        android:paddingTop="20dp"
-        android:text="Find a Movie"
-        android:textColor="#fff"
-        android:layout_marginBottom="14dp"
-        android:gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="189dp"
-        android:layout_height="135dp"
-        android:background="@drawable/logov1"
-        android:layout_x="200dp"
-        android:layout_y="300dp"
-        android:id="@+id/button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    ]]>
 
     <Button
         android:id="@+id/boutonFilms"
@@ -82,10 +67,52 @@
         android:paddingTop="10dp"
         android:text="Movies"
         android:textColor="#fff"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="65dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:onClick="rechercheFilms"
+        android:layout_marginRight="8dp" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/boutonTrouverFilm"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:background="@drawable/searchmyfilm"
+        android:drawableTop="@drawable/ic_movie_creation_white_24dp"
+        android:paddingTop="20dp"
+        android:text="Find my Movie!"
+        android:textColor="#fff"
+        android:gravity="center_horizontal"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        android:onClick="suggestion"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+    <ImageView
+        android:layout_width="277dp"
+        android:layout_height="228dp"
+        app:srcCompat="@drawable/logov1"
+        android:id="@+id/Logo"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintVertical_bias="0.56" />
+
+</android.support.constraint.ConstraintLayout>

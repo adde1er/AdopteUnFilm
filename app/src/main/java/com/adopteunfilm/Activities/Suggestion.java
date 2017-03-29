@@ -45,7 +45,7 @@ public class Suggestion  extends AppCompatActivity {
 			Thread t = new Thread(){
 				public void run() {
 					try {
-						URL url = new URL("http://www.omdbapi.com/?t=1-900&plot=full");
+						URL url = new URL("http://www.omdbapi.com/?t=Jumanji&plot=full");
 	                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 	                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 	                	java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
