@@ -18,8 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.RechercheFilms"></activity>
-        <activity android:name=".Activities.Suggestions"></activity>
+        <activity android:name=".Activities.Suggestion"></activity>
         <activity android:name=".Activities.WishList"></activity>
+        <activity android:name=".Activities.ProfilUser"></activity>
+        <activity android:name=".Activities.RechercheUser"></activity>
     </application>
 
 </manifest>
