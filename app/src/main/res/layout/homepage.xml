@@ -16,7 +16,6 @@
         android:drawableTop="@drawable/ic_person_white_24dp"
         android:paddingTop="20dp"
         android:text="Profile"
-        android:textColor="#fff"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp"
@@ -33,7 +32,6 @@
         android:drawableBottom="@android:drawable/ic_menu_search"
         android:paddingTop="10dp"
         android:text="Users"
-        android:textColor="#fff"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
@@ -64,7 +62,6 @@
         android:drawableBottom="@android:drawable/ic_menu_search"
         android:paddingTop="10dp"
         android:text="Movies"
-        android:textColor="#fff"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
@@ -81,7 +78,6 @@
         android:drawableTop="@drawable/ic_movie_creation_white_24dp"
         android:paddingTop="20dp"
         android:text="Find my Movie!"
-        android:textColor="#fff"
         android:gravity="center_horizontal"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
@@ -91,7 +87,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/Logo" />
+        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
     <ImageView
         android:layout_width="277dp"
