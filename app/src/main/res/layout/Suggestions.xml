@@ -18,6 +18,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="8dp"
+        android:onClick="nextVote"
         app:layout_constraintLeft_toRightOf="@+id/textTitre"
         android:layout_marginLeft="8dp" />
 
@@ -126,7 +127,7 @@
         android:numStars="5"
         android:isIndicator="false"
         android:stepSize="1"
-        android:rating="5"
+        android:rating="3"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
