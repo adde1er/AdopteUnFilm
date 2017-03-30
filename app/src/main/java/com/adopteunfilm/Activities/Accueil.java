@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 
@@ -19,42 +20,11 @@ import org.json.JSONObject;
 import com.adopteunfilm.R;
 
 public class Accueil extends NavBar{
-
-	SharedPreferences settings;
-    SharedPreferences.Editor editor;
-    Handler handler = new Handler();
+	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.homepage);
-        
-        settings = getSharedPreferences("AdopteUnFilm",MODE_PRIVATE);
-        editor = settings.edit();
-        
-        
-        if(settings.getInt("idUser", -1) == -1){
-        	Thread t = new Thread(){
-				public void run() {
-					try {
-						/*URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/add/default"); // Vous touchez à ça je revert.
-	                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-	                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-	                	java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
-	                    String x =  s.hasNext() ? s.next() : "";
-	                    editor.putInt("idUser", Integer.parseInt(x));*/
-						editor.putInt("idUser", 4); //temp
-						editor.commit();					
-	                }catch(Exception e){
-	                }
-					handler.post(new Runnable() {
-		                public void run() {
-		                }
-		            });
-		        }
-			};
-			t.start();
-            
-        }
         
     }
 

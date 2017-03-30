@@ -12,7 +12,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/fond3">
+        
+        <TextView
+            android:text="Titre"
+            android:layout_width="232dp"
+            android:layout_height="85dp"
+            android:gravity="center"
+            android:id="@+id/textTitre"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#00FFFFFF"
+            android:layout_alignBottom="@+id/boutonSuivant"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            />
 
+		<TextView
+            android:text=" Description"
+            android:id="@+id/textDescription"
+            android:layout_width="150dp"
+            android:layout_height="247dp"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:background="#FFFFFF"
+            android:layout_marginTop="105dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="2dp"
+            android:scrollbars="vertical"
+            />
 
         <ImageView
             android:layout_width="186dp"
@@ -25,7 +57,7 @@
             android:layout_marginRight="2dp"
             android:opacity="translucent"
             />
-
+        
         <Button
             android:id="@+id/boutonWishlist"
             android:layout_width="110dp"
@@ -36,7 +68,7 @@
             android:textSize="25px"
             android:textColor="#fff"
             android:layout_above="@+id/ratingBar"
-            android:onClick="whishlist"
+            android:onClick="wishlist"
             android:layout_alignBaseline="@+id/buttonAffiche"
             android:layout_marginLeft="50dp"
             />
@@ -55,55 +87,6 @@
             android:layout_alignLeft="@+id/textDescription"
             android:layout_alignStart="@+id/textDescription" />
 
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
-            style="@android:style/Widget.RatingBar"
-            android:numStars="5"
-            android:isIndicator="false"
-            android:stepSize="1"
-            android:rating="3"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:text=" Description"
-            android:id="@+id/textDescription"
-            android:layout_width="150dp"
-            android:layout_height="247dp"
-            android:textSize="14dp"
-            android:textColor="#000000"
-            android:background="#FFFFFF"
-            android:layout_marginTop="105dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="2dp"
-            android:scrollbars="vertical"
-            />
-
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-        <TextView
-            android:text="Titre"
-            android:layout_width="232dp"
-            android:layout_height="85dp"
-            android:gravity="center"
-            android:id="@+id/textTitre"
-            android:textSize="30dp"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#00FFFFFF"
-            android:layout_alignBottom="@+id/boutonSuivant"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="5dp"
-            />
-        </ScrollView>
-
         <Button
             android:id="@+id/boutonSuivant"
             android:layout_width="80dp"
@@ -118,6 +101,18 @@
             android:onClick="nextVote"
             android:layout_alignRight="@+id/textDescription"
             android:layout_alignEnd="@+id/textDescription" />
+            
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            style="@android:style/Widget.RatingBar"
+            android:numStars="5"
+            android:isIndicator="false"
+            android:stepSize="1"
+            android:rating="3"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
     <ListView

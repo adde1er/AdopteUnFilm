@@ -38,7 +38,6 @@ public class Suggestion  extends NavBar {
 	ImageView affiche;
 	TextView description;
 	TextView titre;
-	Handler handler = new Handler();
 	String x;
 	String toDesc;
 	String toTitle;
@@ -47,6 +46,7 @@ public class Suggestion  extends NavBar {
 	int idUser;
 	int idFilm;
 	RatingBar bar;
+	Handler handler = new Handler();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -162,20 +162,21 @@ public class Suggestion  extends NavBar {
 	                	affiche.setImageBitmap(icon);
 	                	description.setText(toDesc);
 	                	titre.setText(toTitle);
+	                	bar.setRating(3);
 	                }
 	            });
 	        }
 		};
 		t.start();
-		bar.setRating(3);
 	}
 	
-	public void whishlist(View view){
+	public void wishlist(View view){
 		Thread t = new Thread(){
 			public void run() {
 				try {
 					URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/wishlist/update/" + idUser + "/" + idFilm);
                 	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 }catch(Exception e){
                 }
 	        }
@@ -189,6 +190,7 @@ public class Suggestion  extends NavBar {
 				try {
 					URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/share/" + idUser + "/" + idFilm);
                 	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 }catch(Exception e){
                 }
 	        }

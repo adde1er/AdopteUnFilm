@@ -5,18 +5,6 @@
     android:layout_height="match_parent">
 
 
-    <Button
-        android:id="@+id/searchbutton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/cercle"
-        android:drawableTop="@android:drawable/ic_menu_search"
-        android:paddingTop="10dp"
-        android:onClick="onResearch"/>
-
     <ListView
         android:id="@+id/listViewUsers"
         android:layout_width="wrap_content"
@@ -37,6 +25,18 @@
         android:layout_above="@+id/listViewUsers"
         android:layout_toLeftOf="@+id/searchbutton"
         android:layout_toStartOf="@+id/searchbutton" />
+        
+    <Button
+        android:id="@+id/searchbutton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/cercle"
+        android:drawableTop="@android:drawable/ic_menu_search"
+        android:paddingTop="10dp"
+        android:onClick="onResearch"/>
     
 </RelativeLayout>
 
