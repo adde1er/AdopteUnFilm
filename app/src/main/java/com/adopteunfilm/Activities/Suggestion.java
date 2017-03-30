@@ -34,7 +34,7 @@ import org.json.JSONArray;
  * Created by Adrien on 02/03/2017.
  */
 
-public class Suggestion  extends AppCompatActivity {
+public class Suggestion  extends NavBar {
 	ImageView affiche;
 	TextView description;
 	TextView titre;
@@ -46,17 +46,10 @@ public class Suggestion  extends AppCompatActivity {
 	SharedPreferences settings;
 	int idUser;
 	RatingBar bar;
-
-	private ListView mDrawerList;
-	private DrawerLayout mDrawerLayout;
-	private ArrayAdapter<String> mAdapter;
-	private ActionBarDrawerToggle mDrawerToggle;
-	private String mActivityTitle;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.suggestions);
+		super.onCreate(savedInstanceState, R.layout.suggestions);
 		
 		affiche = (ImageView) findViewById(R.id.buttonAffiche);
 		description = (TextView) findViewById(R.id.textDescription);
@@ -116,16 +109,6 @@ public class Suggestion  extends AppCompatActivity {
 		        }
 			};
 			t.start();
-			
-			mDrawerList = (ListView) findViewById(R.id.navList);
-			mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-			mActivityTitle = getTitle().toString();
-
-			addDrawerItems();
-			setupDrawer();
-
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			getSupportActionBar().setHomeButtonEnabled(true);
 		 
 	 }
 	
@@ -183,71 +166,5 @@ public class Suggestion  extends AppCompatActivity {
 		t.start();
 		bar.setRating(3);
 	}
-	
-	private void addDrawerItems() {
-		String[] osArray = {"Film 1", "Film 2", "Film 3", "Film 4", "Film 5"};
-		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
-		mDrawerList.setAdapter(mAdapter);
-
-		mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Toast.makeText(Suggestion.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
-			}
-		});
-	}
-
-	private void setupDrawer() {
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
-
-			// Called when a drawer has settled in a completely open state.
-			public void onDrawerOpened(View drawerView) {
-				super.onDrawerOpened(drawerView);
-				getSupportActionBar().setTitle("WatchList");
-				invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-			}
-
-			// Called when a drawer has settled in a completely closed state. //
-			public void onDrawerClosed(View view) {
-				super.onDrawerClosed(view);
-				getSupportActionBar().setTitle(mActivityTitle);
-				invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-			}
-		};
-
-		mDrawerToggle.setDrawerIndicatorEnabled(true);
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
-	}
-
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
-		mDrawerToggle.syncState();
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		mDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-
-
-		// Activate the navigation drawer toggle
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
-	        
 }
 
