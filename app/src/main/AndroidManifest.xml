@@ -27,7 +27,6 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity android:name=".Activities.Suggestion"></activity>
-        <activity android:name=".Activities.WishList"></activity>
         <activity android:name=".Activities.ProfilUser"></activity>
         <!-- searchable activity utilisateurs -->
         <activity android:name=".Activities.RechercheUser"
