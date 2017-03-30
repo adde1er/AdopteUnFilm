@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 import com.adopteunfilm.R;
 
-public class Accueil extends AppCompatActivity{
+public class Accueil extends NavBar{
 
 	SharedPreferences settings;
     SharedPreferences.Editor editor;
@@ -26,8 +26,7 @@ public class Accueil extends AppCompatActivity{
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.homepage);
+        super.onCreate(savedInstanceState, R.layout.homepage);
         
         settings = getSharedPreferences("AdopteUnFilm",MODE_PRIVATE);
         editor = settings.edit();

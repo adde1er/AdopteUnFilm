@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fond3">
 
     <EditText
         android:id="@+id/Username"
@@ -27,7 +35,10 @@
         android:layout_marginRight="21dp"
         android:background="@drawable/cercle"
         android:text="Modifer username"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="modif">
+    </Button>
+
 
     <Button
         android:id="@+id/WatchListu"
@@ -41,7 +52,8 @@
         android:layout_marginTop="53dp"
         android:background="@drawable/cercle"
         android:text="WatchList"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="watchP"/>
 
     <Button
         android:id="@+id/Followersu"
@@ -52,7 +64,8 @@
         android:layout_alignRight="@+id/Modif"
         android:background="@drawable/cercle"
         android:text="Followers"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="followP"/>
 
     <ListView
         android:id="@+id/WatchFollowu"
@@ -64,3 +77,4 @@
         android:layout_marginTop="23dp" />
 
 </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

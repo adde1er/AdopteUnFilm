@@ -45,6 +45,7 @@ public class Suggestion  extends NavBar {
 	Bitmap icon;
 	SharedPreferences settings;
 	int idUser;
+	int idFilm;
 	RatingBar bar;
 	
 	@Override
@@ -69,6 +70,7 @@ public class Suggestion  extends NavBar {
 	                    x =  s.hasNext() ? s.next() : "";
 	                    JSONObject jsnObject = new JSONObject(x);
 	                    x = jsnObject.getString("title");
+	                    idFilm = jsnObject.getInt("id");
 	                    x = x.replaceAll(" ", "%20");
 	                    x = x.replaceAll("\'", "%27");
 	                    
@@ -117,13 +119,14 @@ public class Suggestion  extends NavBar {
 		Thread t = new Thread(){
 			public void run() {
 				try {
-					URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/vote/" + idUser + "/" + bar.getNumStars());
+					URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/vote/" + idUser + "/" + (int) bar.getRating());
                 	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 	java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
                     x =  s.hasNext() ? s.next() : "";
                     JSONObject jsnObject = new JSONObject(x);
                     x = jsnObject.getString("title");
+                    idFilm = jsnObject.getInt("id");
                     x = x.replaceAll(" ", "%20");
                     x = x.replaceAll("\'", "%27");
                     
@@ -165,6 +168,32 @@ public class Suggestion  extends NavBar {
 		};
 		t.start();
 		bar.setRating(3);
+	}
+	
+	public void whishlist(View view){
+		Thread t = new Thread(){
+			public void run() {
+				try {
+					URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/wishlist/update/" + idUser + "/" + idFilm);
+                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                }catch(Exception e){
+                }
+	        }
+		};
+		t.start();
+	}
+	
+	public void share(View view){
+		Thread t = new Thread(){
+			public void run() {
+				try {
+					URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/share/" + idUser + "/" + idFilm);
+                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                }catch(Exception e){
+                }
+	        }
+		};
+		t.start();
 	}
 }
 
