@@ -11,7 +11,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/lake">
+        android:background="@drawable/fond3">
 
 
         <ImageView
@@ -19,9 +19,11 @@
             android:layout_height="247dp"
             android:background="@drawable/affichefilm"
             android:id="@+id/buttonAffiche"
+            android:backgroundTint="#00FFFFFF"
             android:layout_marginTop="105dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="2dp"
+            android:opacity="translucent"
             />
 
         <Button
@@ -76,6 +78,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="2dp"
+            android:scrollbars="vertical"
             />
 
         <TextView
