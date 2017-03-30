@@ -43,7 +43,7 @@ public class RechercheFilms extends AppCompatActivity {
         button = (Button) findViewById(R.id.searchbutton);
     }
 
-    public void onResearch(View view) {
+    public void onResearchFilm(View view) {
         String recherchetext = searchbar.getText().toString();
 
         try {

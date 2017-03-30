@@ -15,7 +15,7 @@
         android:background="@drawable/cercle"
         android:drawableTop="@android:drawable/ic_menu_search"
         android:paddingTop="10dp"
-        android:onClick="onResearch"/>
+        android:onClick="onResearchUser"/>
 
     <ListView
         android:id="@+id/listViewUsers"
