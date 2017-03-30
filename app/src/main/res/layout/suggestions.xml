@@ -36,6 +36,7 @@
             android:textSize="25px"
             android:textColor="#fff"
             android:layout_above="@+id/ratingBar"
+            android:onClick="whishlist"
             android:layout_alignBaseline="@+id/buttonAffiche"
             android:layout_marginLeft="50dp"
             />
@@ -50,6 +51,7 @@
             android:textSize="40px"
             android:textColor="#fff"
             android:layout_above="@+id/ratingBar"
+            android:onClick="share"
             android:layout_alignLeft="@+id/textDescription"
             android:layout_alignStart="@+id/textDescription" />
 
