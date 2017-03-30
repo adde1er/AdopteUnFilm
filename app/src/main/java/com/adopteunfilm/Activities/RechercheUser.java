@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * Created by Utilisateur on 28/03/2017.
  */
 
-public class RechercheUser extends AppCompatActivity {
+public class RechercheUser extends NavBar {
 
     public ListView listview;
     public TextView searchbar;
@@ -41,8 +41,7 @@ public class RechercheUser extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.recherche_users);
+        super.onCreate(savedInstanceState, R.layout.recherche_users);
 
         listview = (ListView) findViewById(R.id.listViewUsers);
         searchbar = (TextView) findViewById(R.id.searchbar);
