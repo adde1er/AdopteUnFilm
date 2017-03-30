@@ -1,10 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/lake">
+
+    <TextView
+        android:text="Titre"
+        android:layout_width="232dp"
+        android:layout_height="85dp"
+        android:gravity="center"
+        android:id="@+id/textTitre"
+        android:textSize="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@android:color/white"
+        />
+
+    <ImageView
+        android:layout_width="186dp"
+        android:layout_height="258dp"
+        android:background="@drawable/affichefilm"
+        android:id="@+id/buttonAffiche"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_below="@+id/textTitre" />
+
+    <TextView
+        android:text=" Description"
+        android:id="@+id/textDescription"
+        android:layout_width="150dp"
+        android:layout_height="248dp"
+        android:textSize="14dp"
+        android:background="@android:color/white"
+
+        android:layout_alignBottom="@+id/buttonAffiche"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <Button
+        android:id="@+id/boutonWishlist"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cercle"
+        android:drawableTop="@drawable/ic_movie_filter_white_24dp"
+        android:paddingTop="20dp"
+        android:text="Add to Wishlist"
+        android:textColor="#fff"
+        android:layout_marginRight="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_alignBaseline="@+id/boutonPartager"
+        android:layout_alignBottom="@+id/boutonPartager"
+        android:layout_alignRight="@+id/buttonAffiche"
+        android:layout_alignEnd="@+id/buttonAffiche" />
+
+    <Button
+        android:id="@+id/boutonPartager"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cercle"
+        android:drawableTop="@android:drawable/ic_menu_share"
+        android:text="Share"
+        android:textColor="#fff"
+        android:layout_above="@+id/ratingBar"
+        android:layout_alignLeft="@+id/textDescription"
+        android:layout_alignStart="@+id/textDescription" />
 
     <Button
         android:id="@+id/boutonSuivant"
@@ -15,108 +86,9 @@
         android:paddingTop="20dp"
         android:text="Next"
         android:textColor="#fff"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/textTitre"
-        android:layout_marginLeft="8dp" />
-
-    <TextView
-        android:text="Titre"
-        android:layout_width="232dp"
-        android:layout_height="85dp"
-        android:gravity="center"
-        android:id="@+id/textTitre"
-        android:textSize="30dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        android:background="@android:color/white" />
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="355dp"
-        android:layout_height="267dp"
-        android:id="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/boutonSuivant"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintHorizontal_bias="0.41">
-
-        <TextView
-            android:text=" Description"
-            android:layout_width="150dp"
-            android:layout_height="248dp"
-            android:gravity="center"
-            android:id="@+id/textDescription"
-            android:textSize="14dp"
-
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/white" />
-
-        <ImageView
-            android:layout_width="186dp"
-            android:layout_height="258dp"
-            android:background="@drawable/affichefilm"
-
-            android:id="@+id/buttonAffiche"
-
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="0dp" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="232dp"
-        android:layout_height="105dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0">
-
-        <Button
-            android:id="@+id/boutonPartager"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/cercle"
-            android:drawableTop="@android:drawable/ic_menu_share"
-            android:paddingTop="20dp"
-            android:text="Share"
-            android:textColor="#fff"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="8dp"
-            app:layout_constraintLeft_toRightOf="@+id/boutonWishlist"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/boutonWishlist"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/cercle"
-            android:drawableTop="@drawable/ic_movie_filter_white_24dp"
-            android:paddingTop="20dp"
-            android:text="Add to Wishlist"
-            android:textColor="#fff"
-            android:gravity="center_horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+        android:layout_above="@+id/textDescription"
+        android:layout_alignRight="@+id/textDescription"
+        android:layout_alignEnd="@+id/textDescription" />
 
     
     <RatingBar
@@ -128,30 +100,15 @@
         android:isIndicator="false"
         android:stepSize="1"
         android:rating="5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-   <!-- <android.support.v4.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/drawer_layout"
-        android:layout_width="0dp"
-        android:layout_height="495dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
-        <ListView
-            android:id="@+id/navList"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="left|start"
-            android:background="#ffeeeeee"/>
+</RelativeLayout>
+    <ListView
+        android:id="@+id/navList"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|start"
+        android:background="#ffeeeeee"/>
 
-    </android.support.v4.widget.DrawerLayout>
--->
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.DrawerLayout>

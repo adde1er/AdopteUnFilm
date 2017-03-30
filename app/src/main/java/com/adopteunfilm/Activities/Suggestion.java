@@ -41,12 +41,11 @@ public class Suggestion  extends AppCompatActivity {
 	public String toTitle;
 	public Bitmap icon;
 
-	/*	//wishlist
 	private ListView mDrawerList;
 	private DrawerLayout mDrawerLayout;
 	private ArrayAdapter<String> mAdapter;
 	private ActionBarDrawerToggle mDrawerToggle;
-	private String mActivityTitle; */
+	private String mActivityTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +85,8 @@ public class Suggestion  extends AppCompatActivity {
 		};
 		t.start();
 
-/*
-		mDrawerList = (ListView)findViewById(R.id.navList);mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+		mDrawerList = (ListView) findViewById(R.id.navList);
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mActivityTitle = getTitle().toString();
 
 		addDrawerItems();
@@ -98,7 +97,7 @@ public class Suggestion  extends AppCompatActivity {
 	}
 
 	private void addDrawerItems() {
-		String[] osArray = { "Android", "iOS", "Windows", "OS X", "Linux" };
+		String[] osArray = {"Film 1", "Film 2", "Film 3", "Film 4", "Film 5"};
 		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
 		mDrawerList.setAdapter(mAdapter);
 
@@ -116,7 +115,7 @@ public class Suggestion  extends AppCompatActivity {
 			// Called when a drawer has settled in a completely open state.
 			public void onDrawerOpened(View drawerView) {
 				super.onDrawerOpened(drawerView);
-				getSupportActionBar().setTitle("Navigation!");
+				getSupportActionBar().setTitle("WatchList");
 				invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 			}
 
@@ -145,12 +144,6 @@ public class Suggestion  extends AppCompatActivity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		return true;
-	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -167,6 +160,6 @@ public class Suggestion  extends AppCompatActivity {
 
 		return super.onOptionsItemSelected(item);
 	}
-		*/
+
 }
-}
+
