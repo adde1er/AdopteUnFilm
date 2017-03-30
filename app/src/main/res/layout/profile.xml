@@ -4,39 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/Pseudo"
+    <EditText
+        android:id="@+id/Username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="41dp"
+        android:ems="10"
+        android:inputType="textPersonName"
         android:text="Username"
-        android:textSize="40dp" />
-
-    <ToggleButton
-        android:id="@+id/boutonSuivre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/cercle"
-        android:checked="false"
-        android:textColor="@android:color/white"
-        android:textOff="Follow"
-        android:textOn="Unfollow"
-        android:layout_marginRight="26dp"
-        android:layout_marginEnd="26dp"
-        android:layout_alignTop="@+id/Pseudo"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/Modif"
+        android:layout_toStartOf="@+id/Modif" />
 
     <Button
-        android:id="@+id/WatchList"
+        android:id="@+id/Modif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Username"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:background="@drawable/cercle"
+        android:text="Modifer username"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/WatchListu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/Pseudo"
+        android:layout_below="@+id/Username"
         android:layout_marginLeft="68dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="53dp"
@@ -45,24 +44,23 @@
         android:textColor="@color/white" />
 
     <Button
-        android:id="@+id/Followers"
+        android:id="@+id/Followersu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/WatchList"
-        android:layout_alignEnd="@+id/boutonSuivre"
-        android:layout_alignRight="@+id/boutonSuivre"
+        android:layout_alignBottom="@+id/WatchListu"
+        android:layout_alignEnd="@+id/Modif"
+        android:layout_alignRight="@+id/Modif"
         android:background="@drawable/cercle"
         android:text="Followers"
         android:textColor="@color/white" />
 
     <ListView
-        android:id="@+id/WatchFollow"
+        android:id="@+id/WatchFollowu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/WatchList"
-        android:layout_marginTop="25dp"
-        android:visibility="visible" />
+        android:layout_below="@+id/WatchListu"
+        android:layout_marginTop="23dp" />
 
 </RelativeLayout>
