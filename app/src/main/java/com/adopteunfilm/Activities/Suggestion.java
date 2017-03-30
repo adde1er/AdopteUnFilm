@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Handler;
 import android.widget.TextView;
+import android.widget.RatingBar;
+import android.widget.Toast;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.view.View;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.content.SharedPreferences;
 import java.net.*;
 import java.io.*;
 import java.lang.*;
@@ -24,40 +27,70 @@ import org.json.JSONObject;
  */
 
 public class Suggestion  extends AppCompatActivity {
-	public ImageView affiche;
-	public TextView description;
-	public TextView titre;
-	public Handler handler = new Handler();
-	public String x;
-	public String toDesc;
-	public String toTitle;
-	public Bitmap icon;
+	ImageView affiche;
+	TextView description;
+	TextView titre;
+	Handler handler = new Handler();
+	String x;
+	String toDesc;
+	String toTitle;
+	Bitmap icon;
+	SharedPreferences settings;
+	int idUser;
+	String test;
+	RatingBar bar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.suggestions);
-		 
+		
 		affiche = (ImageView) findViewById(R.id.buttonAffiche);
 		description = (TextView) findViewById(R.id.textDescription);
 		titre = (TextView) findViewById(R.id.textTitre);
+		settings = getSharedPreferences("AdopteUnFilm",MODE_PRIVATE);
+		idUser = settings.getInt("idUser",1);
+		
+		bar = (RatingBar) findViewById(R.id.ratingBar);
 	        
 			Thread t = new Thread(){
 				public void run() {
 					try {
-						URL url = new URL("http://www.omdbapi.com/?t=Jumanji&plot=full");
+						URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/recommend/" + idUser);
 	                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 	                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 	                	java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
 	                    x =  s.hasNext() ? s.next() : "";
 	                    JSONObject jsnObject = new JSONObject(x);
+	                    x = jsnObject.getString("title");
+	                    x = x.replaceAll(" ", "%20");
+	                    x = x.replaceAll("\'", "%27");
+	                    
+						url = new URL("http://www.omdbapi.com/?s="+x);
+	                	urlConnection = (HttpURLConnection) url.openConnection();
+	                	in = new BufferedInputStream(urlConnection.getInputStream());
+	                	s = new java.util.Scanner(in).useDelimiter("\\A");
+	                    x =  s.hasNext() ? s.next() : "";
+	                    jsnObject = new JSONObject(x);
+	                    JSONArray jsnArray = jsnObject.getJSONArray("Search");
+	                    jsnObject = jsnArray.getJSONObject(0);
+	                    toTitle = jsnObject.getString("Title");
+	                    toTitle = toTitle.replaceAll(" ", "%20");
+	                    toTitle = toTitle.replaceAll("\'", "%27");
+	                    
+	                    url = new URL("http://www.omdbapi.com/?t="+toTitle+"&plot=full");
+	                	urlConnection = (HttpURLConnection) url.openConnection();
+	                	in = new BufferedInputStream(urlConnection.getInputStream());
+	                	s = new java.util.Scanner(in).useDelimiter("\\A");
+	                    x =  s.hasNext() ? s.next() : "";
+	                    jsnObject = new JSONObject(x);
 	                    toTitle = jsnObject.getString("Title");
 	                    toDesc = jsnObject.getString("Plot");
 	                    x = jsnObject.getString("Poster");
 	                    
 	                    icon = null;
 	                    in = new URL(x).openStream();
-	                    icon = BitmapFactory.decodeStream(in);        
+	                    icon = BitmapFactory.decodeStream(in);
 	                }catch(Exception e){
 	                }
 		            handler.post(new Runnable() {
@@ -72,5 +105,60 @@ public class Suggestion  extends AppCompatActivity {
 			t.start();
 		 
 	 }
+	
+	
+	public void nextVote(View view){
+		Thread t = new Thread(){
+			public void run() {
+				try {
+					URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/vote/" + idUser + "/" + bar.getNumStars());
+                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                	java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
+                    x =  s.hasNext() ? s.next() : "";
+                    JSONObject jsnObject = new JSONObject(x);
+                    x = jsnObject.getString("title");
+                    x = x.replaceAll(" ", "%20");
+                    x = x.replaceAll("\'", "%27");
+                    
+					url = new URL("http://www.omdbapi.com/?s="+x);
+                	urlConnection = (HttpURLConnection) url.openConnection();
+                	in = new BufferedInputStream(urlConnection.getInputStream());
+                	s = new java.util.Scanner(in).useDelimiter("\\A");
+                    x =  s.hasNext() ? s.next() : "";
+                    jsnObject = new JSONObject(x);
+                    JSONArray jsnArray = jsnObject.getJSONArray("Search");
+                    jsnObject = jsnArray.getJSONObject(0);
+                    toTitle = jsnObject.getString("Title");
+                    toTitle = toTitle.replaceAll(" ", "%20");
+                    toTitle = toTitle.replaceAll("\'", "%27");
+                    
+                    url = new URL("http://www.omdbapi.com/?t="+toTitle+"&plot=full");
+                	urlConnection = (HttpURLConnection) url.openConnection();
+                	in = new BufferedInputStream(urlConnection.getInputStream());
+                	s = new java.util.Scanner(in).useDelimiter("\\A");
+                    x =  s.hasNext() ? s.next() : "";
+                    jsnObject = new JSONObject(x);
+                    toTitle = jsnObject.getString("Title");
+                    toDesc = jsnObject.getString("Plot");
+                    x = jsnObject.getString("Poster");
+                    
+                    icon = null;
+                    in = new URL(x).openStream();
+                    icon = BitmapFactory.decodeStream(in);
+                }catch(Exception e){
+                }
+	            handler.post(new Runnable() {
+	                public void run() {
+	                	affiche.setImageBitmap(icon);
+	                	description.setText(toDesc);
+	                	titre.setText(toTitle);
+	                }
+	            });
+	        }
+		};
+		t.start();
+		bar.setRating(3);
+	}
 	        
 }
