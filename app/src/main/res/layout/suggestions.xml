@@ -6,110 +6,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/lake">
-
-    <TextView
-        android:text="Titre"
-        android:layout_width="232dp"
-        android:layout_height="85dp"
-        android:gravity="center"
-        android:id="@+id/textTitre"
-        android:textSize="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="@android:color/white"
-        />
-
-    <ImageView
-        android:layout_width="186dp"
-        android:layout_height="258dp"
-        android:background="@drawable/affichefilm"
-        android:id="@+id/buttonAffiche"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp"
-        android:layout_below="@+id/textTitre" />
-
-    <TextView
-        android:text=" Description"
-        android:id="@+id/textDescription"
-        android:layout_width="150dp"
-        android:layout_height="248dp"
-        android:textSize="14dp"
-        android:background="@android:color/white"
-
-        android:layout_alignBottom="@+id/buttonAffiche"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp" />
-
-    <Button
-        android:id="@+id/boutonWishlist"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/cercle"
-        android:drawableTop="@drawable/ic_movie_filter_white_24dp"
-        android:paddingTop="20dp"
-        android:text="Add to Wishlist"
-        android:textColor="#fff"
-        android:layout_marginRight="19dp"
-        android:layout_marginEnd="19dp"
-        android:layout_alignBaseline="@+id/boutonPartager"
-        android:layout_alignBottom="@+id/boutonPartager"
-        android:layout_alignRight="@+id/buttonAffiche"
-        android:layout_alignEnd="@+id/buttonAffiche" />
-
-    <Button
-        android:id="@+id/boutonPartager"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/cercle"
-        android:drawableTop="@android:drawable/ic_menu_share"
-        android:text="Share"
-        android:textColor="#fff"
-        android:layout_above="@+id/ratingBar"
-        android:layout_alignLeft="@+id/textDescription"
-        android:layout_alignStart="@+id/textDescription" />
-
-    <Button
-        android:id="@+id/boutonSuivant"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/cercle"
-        android:drawableTop="@drawable/ic_arrow_forward_white_24dp"
-        android:paddingTop="20dp"
-        android:text="Next"
-        android:onClick="nextVote"
-        android:textColor="#fff"
-        android:layout_above="@+id/textDescription"
-        android:layout_alignRight="@+id/textDescription"
-        android:layout_alignEnd="@+id/textDescription" />
-
-    
-    <RatingBar
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        style="@android:style/Widget.RatingBar"
-        android:numStars="5"
-        android:isIndicator="false"
-        android:stepSize="1"
-        android:rating="3"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/lake">
 
-</RelativeLayout>
+
+        <ImageView
+            android:layout_width="186dp"
+            android:layout_height="247dp"
+            android:background="@drawable/affichefilm"
+            android:id="@+id/buttonAffiche"
+            android:layout_marginTop="105dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="2dp"
+            />
+
+        <Button
+            android:id="@+id/boutonWishlist"
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:background="@drawable/cercle"
+            android:drawableTop="@drawable/ic_movie_filter_white_24dp"
+            android:text="Add to WatchList"
+            android:textSize="25px"
+            android:textColor="#fff"
+            android:layout_above="@+id/ratingBar"
+            android:layout_alignBaseline="@+id/buttonAffiche"
+            android:layout_marginLeft="50dp"
+            />
+
+        <Button
+            android:id="@+id/boutonPartager"
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:background="@drawable/cercle"
+            android:drawableTop="@android:drawable/ic_menu_share"
+            android:text="Share"
+            android:textSize="40px"
+            android:textColor="#fff"
+            android:layout_above="@+id/ratingBar"
+            android:layout_alignLeft="@+id/textDescription"
+            android:layout_alignStart="@+id/textDescription" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            style="@android:style/Widget.RatingBar"
+            android:numStars="5"
+            android:isIndicator="false"
+            android:stepSize="1"
+            android:rating="5"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text=" Description"
+            android:id="@+id/textDescription"
+            android:layout_width="150dp"
+            android:layout_height="247dp"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:background="#80FFFFFF"
+            android:layout_marginTop="105dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="2dp"
+            />
+
+        <TextView
+            android:text="Titre"
+            android:layout_width="232dp"
+            android:layout_height="85dp"
+            android:gravity="center"
+            android:id="@+id/textTitre"
+            android:textSize="30dp"
+            android:textColor="#000000"
+            android:background="#80FFFFFF"
+            android:layout_alignBottom="@+id/boutonSuivant"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+
+            android:layout_marginBottom="5dp"/>
+
+        <Button
+            android:id="@+id/boutonSuivant"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/cercle"
+            android:drawableTop="@drawable/ic_arrow_forward_white_24dp"
+            android:text="Next"
+            android:textSize="40px"
+            android:textColor="#fff"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:layout_alignRight="@+id/textDescription"
+            android:layout_alignEnd="@+id/textDescription" />
+
+    </RelativeLayout>
     <ListView
         android:id="@+id/navList"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_gravity="left|start"
-        android:background="#ffeeeeee"/>
+        android:background="#ffeeeeee"
+        />
 
 </android.support.v4.widget.DrawerLayout>
