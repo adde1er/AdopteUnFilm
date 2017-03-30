@@ -17,11 +17,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.RechercheFilms"></activity>
+        <!-- searchable activity film -->
+        <activity android:name=".Activities.RechercheFilms"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
         <activity android:name=".Activities.Suggestion"></activity>
-        <activity android:name=".Activities.WishList"></activity>
         <activity android:name=".Activities.ProfilUser"></activity>
-        <activity android:name=".Activities.RechercheUser"></activity>
+        <!-- searchable activity utilisateurs -->
+        <activity android:name=".Activities.RechercheUser"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
     </application>
 
 </manifest>

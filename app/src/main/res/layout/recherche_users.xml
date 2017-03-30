@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
 
     <Button
         android:layout_alignParentTop="true"
@@ -12,9 +15,7 @@
         android:layout_height="50dp"
         android:paddingTop="10dp"
         android:background="@drawable/cercle"
-        android:drawableTop="@android:drawable/ic_menu_search"
-        >
-    </Button>
+        android:drawableTop="@android:drawable/ic_menu_search" />
 
     <EditText
         android:layout_height="50dp"
@@ -26,7 +27,31 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-
-    <!--Mettre une liste view ici-->
+    <ListView
+        android:id="@+id/listViewUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     </RelativeLayout>
+
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchview_users"
+        android:queryHint="Rechercher un utilisateur..."/>/>
+
+    <ListView
+        android:id="@+id/listview_users"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:transcriptMode="alwaysScroll"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@android:color/transparent"/>
+</LinearLayout>
