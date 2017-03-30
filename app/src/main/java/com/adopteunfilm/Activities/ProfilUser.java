@@ -51,7 +51,7 @@ public class ProfilUser extends AppCompatActivity{
         user = (EditText) findViewById(R.id.Username);
         wf = (ListView)findViewById(R.id.WatchFollow);
 
-        /*set name to display
+        /* set name to display
         /Thread t = new Thread(){
             public void run() {
                 try {
