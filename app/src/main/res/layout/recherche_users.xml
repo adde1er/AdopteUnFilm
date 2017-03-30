@@ -1,57 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-
     <Button
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/validerRechercheUtilisateur"
+        android:id="@+id/searchbutton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:paddingTop="10dp"
-        android:background="@drawable/cercle"
-        android:drawableTop="@android:drawable/ic_menu_search" />
-
-    <EditText
-        android:layout_height="50dp"
-        android:layout_width="200dp"
-        android:textSize="25dp"
-        android:hint="Rechercher un utilisateur"
-        android:id="@+id/rechercherUtilisateur"
-        android:layout_toRightOf="@+id/validerRechercheUtilisateur"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:background="@drawable/cercle"
+        android:drawableTop="@android:drawable/ic_menu_search"
+        android:paddingTop="10dp"
+        android:onClick="onResearch"/>
 
     <ListView
         android:id="@+id/listViewUsers"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchbutton">
+    </ListView>
 
-    </RelativeLayout>
-
--->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-    <SearchView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/searchview_users"
-        android:queryHint="Rechercher un utilisateur..."/>/>
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/searchbar"
+        android:layout_above="@+id/listViewUsers"
+        android:layout_toLeftOf="@+id/searchbutton"
+        android:layout_toStartOf="@+id/searchbutton" />
 
-    <ListView
-        android:id="@+id/listview_users"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:transcriptMode="alwaysScroll"
-        android:cacheColorHint="#00000000"
-        android:listSelector="@android:color/transparent"/>
-</LinearLayout>
+</RelativeLayout>
+
