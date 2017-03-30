@@ -4,18 +4,24 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.content.Context;
 import android.support.v7.widget.SearchView;
-import android.view.LayoutInflater;
-import android.view.Menu;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.adopteunfilm.R;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by Adrien on 02/03/2017.
@@ -23,54 +29,48 @@ import com.adopteunfilm.R;
 
 public class RechercheFilms extends AppCompatActivity {
 
-    public ListView lv_film;
-    public SearchView sv_film;
-
-    String[] test = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
-    ArrayAdapter<String> adapter_film;
+    public ListView listview;
+    public TextView searchbar;
+    public Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recherche_films);
-        handleIntent(getIntent());
 
-        lv_film = (ListView) findViewById(R.id.listview_films);
-        sv_film = (SearchView) findViewById(R.id.searchview_films);
-
-        adapter_film = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,test);
-        lv_film.setAdapter(adapter_film);
-
-        sv_film.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String text) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String text) {
-
-                adapter_film.getFilter().filter(text);
-
-                return false;
-            }
-        });
+        listview = (ListView) findViewById(R.id.listViewFilms);
+        searchbar = (TextView) findViewById(R.id.searchbar);
+        button = (Button) findViewById(R.id.searchbutton);
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
-        handleIntent(intent);
-    }
+    public void onResearchFilm(View view) {
+        String recherchetext = searchbar.getText().toString();
 
-    private void handleIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            doMySearch(query);
+        try {
+            URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/movie/search/" + recherchetext);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
+            String x = s.hasNext() ? s.next() : "";
+
+            JSONObject jsnObject;
+            JSONArray jsnArray = new JSONArray(x);
+
+            ArrayList<String> names = new ArrayList<>();
+
+            for (int i = 0; i < jsnArray.length(); ++i) {
+                jsnObject = jsnArray.getJSONObject(i);
+                names.add(jsnObject.toString());
+                Log.i("[i]",jsnObject.toString());
+            }
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                    this,
+                    android.R.layout.simple_list_item_1,
+                    names);
+            listview.setAdapter(arrayAdapter);
+
+        } catch (Exception e) {
+            Log.e("ListView","Could not build the listview from server data",e);
         }
-    }
-
-    private void doMySearch(String query) {
     }
 }

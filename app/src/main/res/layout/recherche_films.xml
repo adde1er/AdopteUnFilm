@@ -1,57 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/validerRechercheFilm"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:paddingTop="10dp"
-        android:background="@drawable/cercle"
-        android:drawableTop="@android:drawable/ic_menu_search"
-        />
-
-    <EditText
-        android:layout_height="50dp"
-        android:layout_width="200dp"
-        android:textSize="25dp"
-        android:hint="Rechercher un film"
-        android:id="@+id/rechercher_un_film"
-        android:layout_toRightOf="@+id/validerRechercheFilm"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
+    <!-- Scrollview ? -->
 
     <ListView
         android:id="@+id/listViewFilms"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchbutton"/>
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Film"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="25dp"
+        android:id="@+id/searchbar"
+        android:layout_above="@+id/listViewFilms"
+        android:layout_toLeftOf="@+id/searchbutton"
+        android:layout_toStartOf="@+id/searchbutton" />
+
+    <Button
+        android:id="@+id/searchbutton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/cercle"
+        android:drawableTop="@android:drawable/ic_menu_search"
+        android:paddingTop="10dp"
+        android:onClick="onResearchFilm"/>
 </RelativeLayout>
-
--->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-<SearchView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/searchview_films"
-    android:queryHint="Rechercher un film..."/>
-
-<ListView
-    android:id="@+id/listview_films"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:transcriptMode="alwaysScroll"
-    android:cacheColorHint="#00000000"
-    android:listSelector="@android:color/transparent"/>
-</LinearLayout>

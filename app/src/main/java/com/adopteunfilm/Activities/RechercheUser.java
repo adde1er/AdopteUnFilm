@@ -85,6 +85,5 @@ public class RechercheUser extends AppCompatActivity {
         	}       	
         };
         t.start();
-        
     }
 }
