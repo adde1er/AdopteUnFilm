@@ -1,5 +1,6 @@
 package com.adopteunfilm.Activities;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -32,7 +33,21 @@ public class MovieInfo extends AppCompatActivity {
     public String toTitle;
     public Bitmap icon;
 
+    private String movietodisplay = "";
+
     //shamelessly C/Ped #freecks's code <3
+
+/*
+* To start this activity from an other one with the wanted film, use this code:
+*
+ Intent intent = new Intent(FirstActivity.this, MovieInfo.class);
+Bundle b = new Bundle();
+b.putInt("movietodisplay", 1);
+intent.putExtras(b);
+startActivity(intent);
+finish();
+* */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +58,15 @@ public class MovieInfo extends AppCompatActivity {
         description = (TextView) findViewById(R.id.textDescription);
         titre = (TextView) findViewById(R.id.textTitre);
 
+        Bundle b = getIntent().getExtras();
+        if (b != null)
+            movietodisplay = b.getString("movietodisplay");
+
         Thread t = new Thread() {
+
             public void run() {
                 try {
-                    URL url = new URL("http://www.omdbapi.com/?t=Jumanji&plot=full");
+                    URL url = new URL("http://www.omdbapi.com/?t=" + movietodisplay + "&plot=full");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                     java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
