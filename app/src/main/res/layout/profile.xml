@@ -27,7 +27,10 @@
         android:layout_marginRight="21dp"
         android:background="@drawable/cercle"
         android:text="Modifer username"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="modif">
+    </Button>
+
 
     <Button
         android:id="@+id/WatchListu"
@@ -41,7 +44,8 @@
         android:layout_marginTop="53dp"
         android:background="@drawable/cercle"
         android:text="WatchList"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="watchP"/>
 
     <Button
         android:id="@+id/Followersu"
@@ -52,7 +56,8 @@
         android:layout_alignRight="@+id/Modif"
         android:background="@drawable/cercle"
         android:text="Followers"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="followP"/>
 
     <ListView
         android:id="@+id/WatchFollowu"
