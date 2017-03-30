@@ -47,7 +47,7 @@ public class RechercheUser extends AppCompatActivity {
         String recherchetext = searchbar.getText().toString();
 
         try {
-            URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/movie/search/" + recherchetext);
+            URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/search/" + recherchetext);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");

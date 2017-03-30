@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+<!-- Scrollview ? -->
     <Button
         android:id="@+id/searchbutton"
         android:layout_width="50dp"
@@ -33,6 +33,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:textSize="25dp"
         android:id="@+id/searchbar"
         android:layout_above="@+id/listViewUsers"
         android:layout_toLeftOf="@+id/searchbutton"
