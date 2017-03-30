@@ -63,7 +63,7 @@
             android:numStars="5"
             android:isIndicator="false"
             android:stepSize="1"
-            android:rating="5"
+            android:rating="3"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
@@ -115,6 +115,7 @@
             android:textColor="#fff"
             android:layout_alignParentTop="true"
             android:layout_marginTop="5dp"
+            android:onClick="nextVote"
             android:layout_alignRight="@+id/textDescription"
             android:layout_alignEnd="@+id/textDescription" />
 
