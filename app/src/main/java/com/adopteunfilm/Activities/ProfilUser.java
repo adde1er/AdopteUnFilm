@@ -1,10 +1,12 @@
 package com.adopteunfilm.Activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -162,18 +164,15 @@ public class ProfilUser extends NavBar {
         wfadaptater = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, s);
         wf.setAdapter(wfadaptater);
 
-        /*wf.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        wf.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Intent intent = new Intent(view.getContext(), UserPage.class);
-                Bundle b = new Bundle();
-                b.putInt(wf.getItemAtPosition(), 1);
-                intent.putExtras(b);
                 startActivity(intent);
                 finish();
             }
-        });*/
+        });
     }
 
 }

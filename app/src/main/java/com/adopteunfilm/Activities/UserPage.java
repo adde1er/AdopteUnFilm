@@ -49,7 +49,7 @@ public class UserPage extends AppCompatActivity{
         SharedPreferences shp = getSharedPreferences("AdopteUnFilm", MODE_PRIVATE);
         id_profile = shp.getInt("idUser",1);
         //normalement obtenu de l'intent
-        id_user = 1;
+        id_user = 2;
         pseudo = (TextView)findViewById(R.id.Pseudo);
         follow = (ToggleButton)findViewById(R.id.boutonSuivre);
         wf = (ListView)findViewById(R.id.WatchFollow);
@@ -68,7 +68,7 @@ public class UserPage extends AppCompatActivity{
         Thread t = new Thread(){
             public void run() {
                 try {
-                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/get/"+ id_profile);
+                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/get/"+ id_user);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                     java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
@@ -92,7 +92,7 @@ public class UserPage extends AppCompatActivity{
         Thread t = new Thread(){
             public void run() {
                 try {
-                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/wishlist/list/" + id_profile);
+                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/wishlist/list/" + id_user);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                     java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
@@ -139,7 +139,7 @@ public class UserPage extends AppCompatActivity{
         Thread t2 = new Thread(){
             public void run() {
                 try {
-                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/follow/list/" + id_profile);
+                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/follow/list/" + id_user);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                     java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
