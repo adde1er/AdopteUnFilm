@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * Created by Adrien on 02/03/2017.
  */
 
-public class RechercheFilms extends AppCompatActivity {
+public class RechercheFilms extends NavBar {
 
     public ListView listview;
     public TextView searchbar;
@@ -41,8 +41,7 @@ public class RechercheFilms extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.recherche_films);
+        super.onCreate(savedInstanceState, R.layout.recherche_films);
 
         listview = (ListView) findViewById(R.id.listViewFilms);
         searchbar = (TextView) findViewById(R.id.searchbar);
@@ -69,7 +68,7 @@ public class RechercheFilms extends AppCompatActivity {
 
                     for (int i = 0; i < jsnArray.length(); ++i) {
                         jsnObject = jsnArray.getJSONObject(i);
-                        names.add(jsnObject.getString("movie"));
+                        names.add(jsnObject.getString("title"));
                         Log.i("[i]",jsnObject.toString());
                     }
 
