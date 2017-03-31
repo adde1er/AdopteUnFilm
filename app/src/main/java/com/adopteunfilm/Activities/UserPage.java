@@ -49,7 +49,7 @@ public class UserPage extends AppCompatActivity{
         SharedPreferences shp = getSharedPreferences("AdopteUnFilm", MODE_PRIVATE);
         id_profile = shp.getInt("idUser",1);
         //normalement obtenu de l'intent
-        id_user = 2;
+        //id_user = getIntent().getExtras().getInt("id_user",id_profile);
         pseudo = (TextView)findViewById(R.id.Pseudo);
         follow = (ToggleButton)findViewById(R.id.boutonSuivre);
         wf = (ListView)findViewById(R.id.WatchFollow);

@@ -164,7 +164,7 @@ public class ProfilUser extends NavBar {
         wfadaptater = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, s);
         wf.setAdapter(wfadaptater);
 
-        wf.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        /*wf.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -172,7 +172,7 @@ public class ProfilUser extends NavBar {
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
     }
 
 }
