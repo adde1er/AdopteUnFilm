@@ -3,6 +3,7 @@ package com.adopteunfilm.Activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,134 +29,155 @@ import java.util.ArrayList;
  * Created by Utilisateur on 28/03/2017.
  */
 
-public class UserPage extends AppCompatActivity implements View.OnClickListener{
+public class UserPage extends AppCompatActivity{
     TextView pseudo;
+    String pseudotext;
     ToggleButton follow;
-    Button watchlist;
-    Button follower;
     ListView wf;
-    ArrayList wfdata;
+    String[] array;
+    ArrayAdapter<String> wfadaptater;
     int id_profile;
     int id_user;
     String x;
-    String toTitle;
+    Handler handler = new Handler();
+
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_page);
-        /*SharedPreferences shp = getSharedPreferences("AdopteUnFilm", MODE_PRIVATE);
-        id_user = shp.getInt("idUser",1);*/
-
+        SharedPreferences shp = getSharedPreferences("AdopteUnFilm", MODE_PRIVATE);
+        id_profile = shp.getInt("idUser",1);
+        //normalement obtenu de l'intent
+        id_user = 1;
         pseudo = (TextView)findViewById(R.id.Pseudo);
         follow = (ToggleButton)findViewById(R.id.boutonSuivre);
-        watchlist = (Button)findViewById(R.id.WatchList);
-        watchlist.setOnClickListener(this);
-        follower = (Button)findViewById(R.id.Followers);
-        follower.setOnClickListener(this);
         wf = (ListView)findViewById(R.id.WatchFollow);
-
-
         follow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 try {
                     URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/follow/"+id_user+"/"+id_profile);
-                    url.openConnection();
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.disconnect();
                 }catch (Exception e){
                 }
 
             }
         });
 
+        Thread t = new Thread(){
+            public void run() {
+                try {
+                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/get/"+ id_profile);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
+                    x =  s.hasNext() ? s.next() : "";
+                    JSONObject jsnObject = new JSONObject(x);
+                    pseudotext = jsnObject.getString("pseudo");
+                    urlConnection.disconnect();
+                }catch(Exception e){
+                }
+                handler.post(new Runnable() {
+                    public void run() {
+                        pseudo.setText(pseudotext);
+                    }
+                });
+            }
+        };
+        t.start();
+
+    }
+    public void watch(View view){
+        Thread t = new Thread(){
+            public void run() {
+                try {
+                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/wishlist/list/" + id_profile);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
+                    x =  s.hasNext() ? s.next() : "";
+                    JSONArray jsnArray = new JSONArray(x);
+                    array = new String[jsnArray.length()];
+                    for(int i = 0; i<jsnArray.length(); i++){
+                        array[i] = jsnArray.getJSONObject(i).getString("title");
+                    }
+                    urlConnection.disconnect();
+                } catch (Exception e) {
+                }
+                handler.post(new Runnable() {
+                    public void run() {
+                        adapt(array);
+                    }
+                });
+
+            }
+        };
+        t.start();
+
+
+    }
+    public void adapt(String[] s){
+        wfadaptater = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, s);
+        wf.setAdapter(wfadaptater);
+
+        /*wf.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), MovieInfo.class);
+                Bundle b = new Bundle();
+                b.putInt(wf.getItemAtPosition(), 1);
+                intent.putExtras(b);
+                startActivity(intent);
+                finish();
+            }
+        });*/
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.WatchList:
-                /*Thread t = new Thread(){
-                    public void run() {
-                        try {
-                            URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/wihslist/list/"+id_profile);
-                            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                            java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
-                                x = s.hasNext() ? s.next() : "";
-                                JSONObject jsnObject = new JSONObject(x);
-                                toTitle = jsnObject.getString("Title");
-                                wfdata.add(toTitle);
-                        }catch(Exception e){
-                        }
+    public void followers(View view){
+        Thread t2 = new Thread(){
+            public void run() {
+                try {
+                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/follow/list/" + id_profile);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
+                    x =  s.hasNext() ? s.next() : "";
+                    JSONArray jsnArray = new JSONArray(x);
+                    array = new String[jsnArray.length()];
+                    for(int i = 0; i<jsnArray.length(); i++){
+                        array[i] = jsnArray.getJSONObject(i).getString("pseudo");
                     }
-                };
-                t.start();*/
-                wfdata = new ArrayList();
-                wfdata.add("film1");
-                wfdata.add("film2");
-                wfdata.add("film3");
-                wfdata.add("film4");
-                wfdata.add("film5");
-                ArrayAdapter wfadaptater = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, wfdata);
-                wf.setAdapter(wfadaptater);
-                wf.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent it = new Intent(view.getContext(),Suggestion.class);
-                        startActivity(it);
+                    urlConnection.disconnect();
+                } catch (Exception e) {
+                }
+                handler.post(new Runnable() {
+                    public void run() {
+                        adapt2(array);
                     }
                 });
-                break;
-            case R.id.Followers:
-                /*Thread t2 = new Thread(){
-                    public void run() {
-                        try {
-                            URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/follow/list/"+id_profile);
-                            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                            java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
-                            x =  s.hasNext() ? s.next() : "";
-                            JSONArray jsnArray = new JSONArray(x);
-                            for (int i = 0; i < jsnArray.length(); i++) {
+            }
+        };
+        t2.start();
 
-                            }
-                            JSONObject jsnObject = new JSONObject(x);
-                            toTitle = jsnObject.getString("Title");
-                            toDesc = jsnObject.getString("Plot");
-                            x = jsnObject.getString("Poster");
+    }
 
-                            icon = null;
-                            in = new URL(x).openStream();
-                            icon = BitmapFactory.decodeStream(in);
-                        }catch(Exception e){
-                        }
-                        handler.post(new Runnable() {
-                            public void run() {
-                                affiche.setImageBitmap(icon);
-                                description.setText(toDesc);
-                                titre.setText(toTitle);
-                            }
-                        });
-                    }
-                };
-                t2.start();*/
-                wfdata = new ArrayList();
-                wfdata.add("user1");
-                wfdata.add("user2");
-                wfdata.add("user3");
-                wfdata.add("user4");
-                wfdata.add("user5");
-                ArrayAdapter wfadaptater2 = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, wfdata);
-                wf.setAdapter(wfadaptater2);
-                wf.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+    public void adapt2(String[] s){
+        wfadaptater = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, s);
+        wf.setAdapter(wfadaptater);
 
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent it = new Intent(view.getContext(),UserPage.class);
-                        startActivity(it);
-                    }
-                });
-                break;
-        }
+        /*wf.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), UserPage.class);
+                Bundle b = new Bundle();
+                b.putInt(wf.getItemAtPosition(), 1);
+                intent.putExtras(b);
+                startActivity(intent);
+                finish();
+            }
+        });*/
     }
 }

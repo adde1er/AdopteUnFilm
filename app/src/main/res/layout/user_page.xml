@@ -12,7 +12,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="34dp"
-        android:text="Username"
         android:textSize="40dp" />
 
     <ToggleButton
@@ -42,7 +41,8 @@
         android:layout_marginTop="53dp"
         android:background="@drawable/cercle"
         android:text="WatchList"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="watch"/>
 
     <Button
         android:id="@+id/Followers"
@@ -53,7 +53,8 @@
         android:layout_alignRight="@+id/boutonSuivre"
         android:background="@drawable/cercle"
         android:text="Followers"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="followers"/>
 
     <ListView
         android:id="@+id/WatchFollow"

@@ -31,6 +31,7 @@
         </activity>
         <activity android:name=".Activities.Suggestion" android:screenOrientation="portrait"></activity>
         <activity android:name=".Activities.ProfilUser" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.UserPage" android:screenOrientation="portrait"></activity>
         <!-- searchable activity utilisateurs -->
         <activity android:name=".Activities.RechercheUser"
             android:launchMode="singleTop"
