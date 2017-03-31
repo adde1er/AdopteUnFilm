@@ -35,8 +35,7 @@ public class RechercheUser extends NavBar {
     public Button button;
     ArrayList<String> names;
     String recherchetext;
-    Handler handler = new Handler();
-    
+    Handler handler = new Handler();    
     RechercheUser activity = this;
 
     @Override
@@ -69,11 +68,9 @@ public class RechercheUser extends NavBar {
         			for (int i = 0; i < jsnArray.length(); ++i) {
         				jsnObject = jsnArray.getJSONObject(i);
         				names.add(jsnObject.getString("pseudo"));
-        				Log.i("[i]",jsnObject.toString());
         			}
         			
         		} catch (Exception e) {
-        			Log.e("ListView","Could not build the listview from server data",e);
         		}
         		handler.post(new Runnable() {
 	                public void run() {

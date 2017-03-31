@@ -54,10 +54,7 @@ public class NavBar extends AppCompatActivity {
 		
 		settings = getSharedPreferences("AdopteUnFilm",MODE_PRIVATE);
         editor = settings.edit();
-        
-        String[] osArray = {"Film 1", "Film 2", "Film 3", "Film 4", "Film 5"};
-		
-		addDrawerItems(osArray);
+
 		setupDrawer();
 		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -66,13 +63,14 @@ public class NavBar extends AppCompatActivity {
 			public void run() {
 				try {
 					if(settings.getInt("idUser", -1) == -1){
+						//Works with this, but some DB problems cause this random
 						/*URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/add/default");
 	                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 	                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 	                	java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
 	                    String x =  s.hasNext() ? s.next() : "";
 	                    editor.putInt("idUser", Integer.parseInt(x));*/
-						editor.putInt("idUser", 4);
+						editor.putInt("idUser", 4); //to prevent DB problems
 						editor.commit();
 					}
 					
@@ -105,13 +103,6 @@ public class NavBar extends AppCompatActivity {
 	
 		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
 		mDrawerList.setAdapter(mAdapter);
-
-		/*mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				//Toast.makeText(NavBar.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
-			}
-		});*/
 	}
 
 	private void setupDrawer() {
