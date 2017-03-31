@@ -63,14 +63,12 @@ public class NavBar extends AppCompatActivity {
 			public void run() {
 				try {
 					if(settings.getInt("idUser", -1) == -1){
-						//Works with this, but some DB problems cause this random
-						/*URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/add/default");
+						URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/user/add/default");
 	                	HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 	                	InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 	                	java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
 	                    String x =  s.hasNext() ? s.next() : "";
-	                    editor.putInt("idUser", Integer.parseInt(x));*/
-						editor.putInt("idUser", 4); //to prevent DB problems
+	                    editor.putInt("idUser", Integer.parseInt(x));
 						editor.commit();
 					}
 					

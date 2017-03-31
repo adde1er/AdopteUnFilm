@@ -24,7 +24,7 @@ import java.util.ArrayList;
  * Created by Utilisateur on 28/03/2017.
  */
 
-public class ProfilUser extends AppCompatActivity{
+public class ProfilUser extends NavBar {
     ListView wf;
     ArrayAdapter<String> wfadaptater;
     int id_profile;
@@ -36,8 +36,7 @@ public class ProfilUser extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile);
+        super.onCreate(savedInstanceState, R.layout.profile);
         SharedPreferences shp = getSharedPreferences("AdopteUnFilm", MODE_PRIVATE);
         id_profile = shp.getInt("idUser",1);
         user = (EditText) findViewById(R.id.Username);
@@ -143,7 +142,7 @@ public class ProfilUser extends AppCompatActivity{
                     JSONArray jsnArray = new JSONArray(x);
                     array = new String[jsnArray.length()];
                     for(int i = 0; i<jsnArray.length(); i++){
-                        array[i] = jsnArray.getJSONObject(i).getString("title");
+                        array[i] = jsnArray.getJSONObject(i).getString("pseudo");
                     }
                     urlConnection.disconnect();
                 } catch (Exception e) {
