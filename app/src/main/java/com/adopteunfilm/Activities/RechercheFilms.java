@@ -3,6 +3,7 @@ package com.adopteunfilm.Activities;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
@@ -32,6 +33,11 @@ public class RechercheFilms extends AppCompatActivity {
     public ListView listview;
     public TextView searchbar;
     public Button button;
+    ArrayList<String> names;
+    String recherchetext;
+    Handler handler = new Handler();
+
+    RechercheFilms activity = this;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,33 +50,40 @@ public class RechercheFilms extends AppCompatActivity {
     }
 
     public void onResearchFilm(View view) {
-        String recherchetext = searchbar.getText().toString();
+        recherchetext = searchbar.getText().toString();
 
-        try {
-            URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/movie/search/" + recherchetext);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-            java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
-            String x = s.hasNext() ? s.next() : "";
 
-            JSONObject jsnObject;
-            JSONArray jsnArray = new JSONArray(x);
+        Thread t = new Thread(){
+            public void run() {
+                try {
+                    URL url = new URL("http://109.209.5.142:8860/adopteunfilmserver/movie/search/" + recherchetext);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    java.util.Scanner s = new java.util.Scanner(in).useDelimiter("\\A");
+                    String x = s.hasNext() ? s.next() : "";
 
-            ArrayList<String> names = new ArrayList<>();
+                    JSONObject jsnObject;
+                    JSONArray jsnArray = new JSONArray(x);
 
-            for (int i = 0; i < jsnArray.length(); ++i) {
-                jsnObject = jsnArray.getJSONObject(i);
-                names.add(jsnObject.toString());
-                Log.i("[i]",jsnObject.toString());
+                    names = new ArrayList<>();
+
+                    for (int i = 0; i < jsnArray.length(); ++i) {
+                        jsnObject = jsnArray.getJSONObject(i);
+                        names.add(jsnObject.getString("movie"));
+                        Log.i("[i]",jsnObject.toString());
+                    }
+
+                } catch (Exception e) {
+                    Log.e("ListView","Could not build the listview from server data",e);
+                }
+                handler.post(new Runnable() {
+                    public void run() {
+                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, names);
+                        listview.setAdapter(arrayAdapter);
+                    }
+                });
             }
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    names);
-            listview.setAdapter(arrayAdapter);
-
-        } catch (Exception e) {
-            Log.e("ListView","Could not build the listview from server data",e);
-        }
+        };
+        t.start();
     }
 }
